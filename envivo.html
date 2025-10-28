@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio Camionera | Reproductor Visual</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+<style>
+/* 🌄 Fondo completo */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: 'Oswald', sans-serif;
+    background: url('https://images.unsplash.com/photo-1610534898564-0db1db7989f3?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+/* 📌 Navbar */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: linear-gradient(90deg, #1a1a1a, #ff6600);
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.logo-container img {
+    width: 120px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #ff9900,0 0 20px #ff0000;
+    animation: neon-pulse 2s infinite alternate;
+}
+
+@keyframes neon-pulse {
+    0%, 40%, 80%, 100% { box-shadow: 0 0 10px #ff9900,0 0 20px #ff0000; }
+    20%, 60% { box-shadow: 0 0 20px #ff0000,0 0 40px #ff6600; }
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+    color: #ffa000;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    color: #ffa000;
+}
+
+@media (max-width: 768px) {
+    .menu {
+        display: none;
+        flex-direction: column;
+        background-color: #2a2a2a;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        text-align: center;
+        border-top: 2px solid #b22222;
+    }
+    .menu.active { display: flex; }
+    .menu-toggle { display: block; }
+}
+
+/* 🎵 Contenedor del reproductor */
+.radio-player-center {
+    position: relative;
+    width: 90%;
+    max-width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 40px;
+    background: rgba(0,0,0,0.7);
+    border-radius: 30px;
+    box-shadow: 0 0 30px #ff0000,0 0 60px #ffa500,0 0 90px #ffff00;
+    z-index: 1;
+}
+
+.radio-player-center h1 {
+    margin-bottom: 30px;
+    font-size: 2em;
+    color: #ffcc00;
+    text-shadow: 0 0 10px #ffcc00,0 0 20px #ff9900;
+}
+
+audio {
+    width: 100%;
+    outline: none;
+    border-radius: 15px;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.controls button {
+    background-color: #ff6600;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2em;
+    color: white;
+    box-shadow: 0 0 10px #ff9900,0 0 20px #ff6600;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px #ff9900,0 0 40px #ff6600;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100px;
+    height: 5px;
+    border-radius: 5px;
+    background: #ffa500;
+    outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #ff0000;
+    cursor: pointer;
+    box-shadow: 0 0 5px #ff6600;
+}
+
+.time {
+    margin-top: 15px;
+    font-size: 1em;
+    color: #fff176;
+    text-shadow: 0 0 5px #fff176;
+}
+
+/* 🌊 Ondas dinámicas */
+canvas#waveCanvas {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 600px;
+    height: 300px;
+    pointer-events: none;
+    z-index: 0;
+}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo-container">
+        <img src="img/radio_camionera_cl.jpg" alt="Radio Camionera" class="logo-img">
+    </div>
+    <ul class="menu" id="menu">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="podcast.html">Podcasts</a></li>
+    </ul>
+    <div class="menu-toggle" id="menu-toggle">☰</div>
+</nav>
+
+<!-- Reproductor -->
+<div class="radio-player-center">
+    <h1>🎙️ Radio Camionera</h1>
+    <audio id="radio" autoplay>
+        <source src="https://rv3.denialstream.com/proxy/radiocamionera/stream" type="audio/mpeg">
+        Tu navegador no soporta el reproductor de audio.
+    </audio>
+
+    <div class="controls">
+        <button id="playPause">▶️</button>
+        <button id="mute">🔇</button>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="1">
+    </div>
+    <div class="time">
+        <span id="currentTime">00:00</span> / <span id="duration">--:--</span>
+    </div>
+
+    <canvas id="waveCanvas" width="600" height="300"></canvas>
+</div>
+
+<script>
+// Toggle menú móvil
+const toggle = document.getElementById('menu-toggle');
+const menu = document.getElementById('menu');
+toggle.addEventListener('click', ()=>{menu.classList.toggle('active');});
+
+// Reproductor
+const radio = document.getElementById('radio');
+const playPauseBtn = document.getElementById('playPause');
+const muteBtn = document.getElementById('mute');
+const volumeSlider = document.getElementById('volume');
+const currentTimeEl = document.getElementById('currentTime');
+const durationEl = document.getElementById('duration');
+
+playPauseBtn.addEventListener('click', () => {
+    if(radio.paused){ radio.play(); playPauseBtn.textContent='⏸️'; }
+    else { radio.pause(); playPauseBtn.textContent='▶️'; }
+});
+
+muteBtn.addEventListener('click', () => {
+    radio.muted = !radio.muted;
+    muteBtn.textContent = radio.muted ? '🔈' : '🔇';
+});
+
+volumeSlider.addEventListener('input', () => { radio.volume = volumeSlider.value; });
+
+radio.addEventListener('timeupdate', () => {
+    const current = Math.floor(radio.currentTime);
+    const minutes = String(Math.floor(current/60)).padStart(2,'0');
+    const seconds = String(current%60).padStart(2,'0');
+    currentTimeEl.textContent = `${minutes}:${seconds}`;
+});
+
+radio.addEventListener('loadedmetadata', () => {
+    const duration = Math.floor(radio.duration);
+    const minutes = String(Math.floor(duration/60)).padStart(2,'0');
+    const seconds = String(duration%60).padStart(2,'0');
+    durationEl.textContent = `${minutes}:${seconds}`;
+});
+
+// 🎶 Ondas animadas con Web Audio API
+const canvas = document.getElementById('waveCanvas');
+const ctx = canvas.getContext('2d');
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+const analyser = audioCtx.createAnalyser();
+const source = audioCtx.createMediaElementSource(radio);
+source.connect(analyser);
+analyser.connect(audioCtx.destination);
+analyser.fftSize = 256;
+
+const bufferLength = analyser.frequencyBinCount;
+const dataArray = new Uint8Array(bufferLength);
+
+function drawWave() {
+    requestAnimationFrame(drawWave);
+    analyser.getByteFrequencyData(dataArray);
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const centerX = canvas.width/2;
+    const centerY = canvas.height/2;
+    for(let i=0;i<bufferLength;i++){
+        const radius = dataArray[i];
+        ctx.beginPath();
+        ctx.arc(centerX, centerY, radius/2 + 50, 0, Math.PI*2);
+        ctx.strokeStyle = `rgba(${255-i*2},${150},0,0.3)`;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+    }
+}
+drawWave();
+</script>
+</body>
+</html>

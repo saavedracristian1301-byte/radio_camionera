@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radio Camionera | Te Acompaña en la Ruta</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 🚛 Navbar con logo imagen y menú -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html" class ="logo-container">
+            <img src="img/radio_camionera_cl.jpg" link alt="Radio Camionera" class="logo-img neon">
+            </a>
+        </div>
+        <ul class="menu" id="menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="podcast.html">Podcast</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+    </nav>
+
+    <!-- 🏠 Sección principal -->
+    <div class="container">
+        <h1>Bienvenidos a Radio Camionera</h1>
+        <p>La radio que acompaña a los camioneros de Chile, día y noche en la ruta 🚛</p>
+    </div>
+
+    <!-- 🎧 Banners de contenido -->
+    <section id="banners" class="banners">
+        <h2>Te acompañamos en cada kilómetro</h2>
+        <div class="contenedor-banners">
+            <div class="tarjeta">
+                <a href="podcast.html" class ="podcast">
+                <img src="https://img.freepik.com/vector-premium/icono-podcast-microfono-mesa-estudio-transmision-programa-radio-blog-audio-ilustracion-vectorial_1072830-466.jpg" alt="Podcast">
+                <h3>Podcast</h3>
+                <p>Escucha nuestras entrevistas exclusivas con camioneros y expertos del rubro.</p>
+                </a>
+            </div>
+            <div class="tarjeta">
+                <a href="noticias.html" class ="noticias">
+                <img src="https://media.istockphoto.com/id/1477858506/es/foto/noticias-en-l%C3%ADnea-en-tel%C3%A9fono-lectura-de-peri%C3%B3dico-desde-el-sitio-web-maqueta-de-publicaci%C3%B3n.jpg?s=612x612&w=0&k=20&c=7OxrzyW1NS5mczNFVxhgIprnnlgxcpmRWT_8T6XjHE0=" alt="Noticias">
+                <h3>Noticias</h3>
+                <p>Infórmate sobre eventos, rutas y novedades del transporte nacional.</p>
+                </a>
+            </div>
+            <div class="tarjeta">
+                <a href="entrevistas.html" class ="entrevistas">
+                <img src="https://img.freepik.com/foto-gratis/vista-lateral-hombres-grabando-podcast_23-2149446236.jpg?semt=ais_hybrid&w=740&q=80" alt="Entrevistas">
+                <h3>Próximas Entrevistas</h3>
+                <p>Conoce quiénes serán nuestros próximos invitados y protagonistas.</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🚛 Sección Sobre Nosotros -->
+    <section id="nosotros" class="sobre-mi">
+        <div class="sobre-mi-contenido">
+            <img src="img/radio_camionera_cl.jpg" alt="Camión en ruta" class="foto-perfil">
+            <div class="texto-sobre-mi">
+                <h2>Sobre Nosotros</h2>
+                <p>Radio Camionera es una radio online creada para el camionero chileno y de países cercanos como Argentina, Perú, Colombia y Brasil.
+Puede ser escuchada desde cualquier dispositivo conectado a internet, sin necesidad de descargar aplicaciones</p>
+                <p>Con locutores comunicándose de forma cercana al auditor, Radio Camionera logra la interacción entre camioneros a través del envío de mensajes y saludos que son transmitidos al aire.</p>
+                <p>Los Programas, conducidos por referentes del sector, quedan disponibles en podcasts luego de su estreno en nuestra programación.</p>
+            </div>
+        </div>
+    </section>
+
+        <!-- Redes sociales -->
+    <section class="redes-sociales">
+        <h2>Síguenos en redes</h2>
+        <div class="redes-icons">
+            <a href="https://www.instagram.com/radiocamionerachile/" target="_blank" class="instagram" title="Instagram">
+                <img src="img/Instagram_icon.png.webp" alt="Instagram">
+            </a>
+            <a href="https://www.youtube.com/channel/UCZOfmAf3IN8nhMxip_vzHyA" target="_blank" class="youtube" title="Youtube">
+                <img src="img/Youtube_logo.png" alt="Youtube">
+            </a>
+            <a href="https://creators.spotify.com/pod/profile/radio-camionera-chile8/episodes/Desde-La-Cabina-T1E1---Guillermo-Gonzlez-e2kajpq" target="_blank" class="spotify" title="Spotify">
+                <img src="img/spotify.png" alt="Spotify">
+            </a>
+        </div>
+    </section>
+
+    <section id="contacto" class="contacto">
+        <div class="sobre-mi-contenido">
+            <div class="texto-sobre-mi">
+        <div class="contacto" href="contacto">
+            <h2>Telefono:</h2>
+            <p>+56 9 97750164 <a href ="https://w.app/tr473c"></a></p>
+            <p>Solo WhatsApp</p>
+            <h2>Correo</h2>
+            <p>contacto@radiocamionera.cl</p>
+        </div>
+    </section>
+
+
+    <!-- 🎵 Reproductor de radio flotante -->
+    <div class="radio-player">
+        <p><strong>En Vivo</strong></p>
+        <audio id="radio" controls autoplay>
+            <source src="https://rv3.denialstream.com/proxy/radiocamionera/stream" type="audio/mpeg">
+            Tu navegador no soporta el reproductor de audio.
+        </audio>
+    </div>
+
+    <!-- 📱 Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

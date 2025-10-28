@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticias - Radio Camionera Chile</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- 🔸 Barra de navegación -->
+    <nav class="navbar">
+        <div class="logo-container">
+            <a href="index.html">
+                <img src="img/radio_camionera_cl.jpg" alt="Radio Camionera Chile" class="logo-img neon">
+            </a>
+        </div>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+        <ul class="menu" id="menu">
+            <li><a href="index.html">Inicio</a></li>
+            <li><a href="radio.html">Radio</a></li>
+            <li><a href="podcasts.html">Podcasts</a></li>
+        </ul>
+    </nav>
+
+    <!-- 📰 Sección principal -->
+    <section class="banners">
+        <h1>Noticias Recientes</h1>
+        <p>Entérate de las últimas novedades del mundo camionero y de la música en ruta.</p>
+
+        <div class="contenedor-banners" id="contenedor-noticias">
+            <!-- Noticia 1 -->
+            <div class="tarjeta">
+                <img src="img/noticia1.jpg" alt="Noticia 1">
+                <h3>Nuevo Convenio para Camioneros</h3>
+                <p>El Ministerio de Transporte anunció un nuevo acuerdo con asociaciones de camioneros para mejorar las rutas nacionales.</p>
+                <a href="nota1.html" class="btn-noticia">Leer más</a>
+            </div>
+
+            <!-- Noticia 2 -->
+            <div class="tarjeta">
+                <img src="img/noticia2.jpg" alt="Noticia 2">
+                <h3>Festival de Música Camionera 2025</h3>
+                <p>Este año vuelve el esperado festival con grandes artistas nacionales y extranjeros. ¡No te lo pierdas!</p>
+                <a href="nota2.html" class="btn-noticia">Leer más</a>
+            </div>
+
+            <!-- Noticia 3 -->
+            <div class="tarjeta">
+                <img src="img/noticia3.jpg" alt="Noticia 3">
+                <h3>Rutas en Mantenimiento</h3>
+                <p>El MOP informó trabajos en las principales carreteras del sur del país durante noviembre. Planifica tu viaje.</p>
+                <a href="nota3.html" class="btn-noticia">Leer más</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 🎧 Reproductor flotante (igual al index) -->
+    <div class="radio-player">
+        <audio controls autoplay>
+            <source src="https://stream-ssl.radios.ar:10917/stream" type="audio/mpeg">
+            Tu navegador no soporta la reproducción de audio.
+        </audio>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
